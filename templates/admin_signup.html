@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+        input[type="text"], input[type="password"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Admin Signup</h1>
+    <form action="/admin_signup" method="POST">
+        <input type="hidden" id="userID" name="userID" value="{{ userID }}">
+        
+        <!-- <label for="adminID">Admin ID:</label><br>
+        <input type="text" id="adminID" name="adminID" required><br>-->
+        
+        <label for="accessLevel">Access Level:</label><br>
+        <input type="text" id="accessLevel" name="accessLevel" required><br>
+        
+        
+        <label for="department">Department:</label><br>
+        <input type="text" id="department" name="department" required><br>
+        
+        <label for="hireDate">Hire Date:</label><br>
+        <input type="text" id="hireDate" name="hireDate" required><br>
+        
+        <label for="lastLoginDate">Last Login Date:</label><br>
+        <input type="text" id="lastLoginDate" name="lastLoginDate" required><br>
+        
+        <label for="profilePicture">Profile Picture:</label><br>
+        <input type="text" id="profilePicture" name="profilePicture" required><br>
+        
+        <label for="contactPreference">Contact Preference:</label><br>
+        <input type="text" id="contactPreference" name="contactPreference" required><br>
+        
+        <label for="role">Role:</label><br>
+        <input type="text" id="role" name="role" required><br>
+        
+        <label for="activeStatus">Active Status:</label><br>
+        <input type="text" id="activeStatus" name="activeStatus" required><br>
+        
+        <input type="submit" value="Submit">
+
+    </form>
+</body>
+</html>

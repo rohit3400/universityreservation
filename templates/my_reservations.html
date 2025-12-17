@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #110808;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #0e0101;
+        }
+        
+    </style>
+{% endblock %}
+{% block body %}
+    <h1>Reservation List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>Status</th>
+                <th>Check-In/Out</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for reservation in reservations %}
+    <tr>
+        <td>{{ reservation[0] }}</td>
+        <td>{{ reservation[1] }}</td>
+        <td>{{ reservation[2] }}</td>
+        <td>{{ reservation[3] }}</td>
+        {% if reservation[3] == 'Confirmed' and (reservation[4] == None or reservation[4] == 'NULL') %}
+        <td> <form action="/my_reservations" method="post">
+                <input type="hidden" name="status" value="Checkin">
+                <input type="hidden" name="reservation_id" value="{{ reservation[0] }}">
+                <button type="submit" class="checkin-button button-container">Check-In</button>
+            </form> </td>
+        {% elif reservation[3] == 'Checked-In' and not (reservation[4] == None or reservation[4] == 'NULL') and (reservation[5] == None or reservation[5] == 'NULL') %}
+        <td>  <form action="/my_reservations" method="post">
+                <input type="hidden" name="status" value="Checkout">
+                <input type="hidden" name="reservation_id" value="{{ reservation[0] }}">
+                <button type="submit" class="checkout-button">Check-Out</button>
+            </form> </td>
+        {% else %}
+        <td>   <button style="background-color:gray; color:white" disabled>Unavailable</button> </td>
+        {% endif %}
+    </tr>
+{% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

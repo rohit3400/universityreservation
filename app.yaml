@@ -1,0 +1,7 @@
+runtime: python311
+
+env_variables:
+  CLOUD_SQL_USERNAME: root
+  CLOUD_SQL_PASSWORD: 
+  CLOUD_SQL_DATABASE_NAME: ubreservation
+  CLOUD_SQL_CONNECTION_NAME: myproject1231276:us-central1:mysql1231276

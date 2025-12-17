@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0a0202;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Unable to book this reservation.</h1>
+    <p>It is a public holiday on the selected date. Try different date.</p>
+    <p>Below is the information about holiday</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Holiday type</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ holidays[0] }}</td>
+                <td>{{ holidays[1] }}</td>
+                <td>{{ holidays[2] }}</td>
+                <td>{{ holidays[3] }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endblock %}

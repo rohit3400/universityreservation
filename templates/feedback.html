@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0a0202;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Feedbacks</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Feedback ID</th>
+                <th>Reservation ID</th>
+                <th>Rating</th>
+                <th>Comments</th>
+                <th>Date Submitted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback[0] }}</td>
+                <td>{{ feedback[1] }}</td>
+                <td>{{ feedback[2] }}</td>
+                <td>{{ feedback[3] }}</td>
+                <td>{{ feedback[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

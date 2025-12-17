@@ -1,0 +1,130 @@
+{%extends 'base.html'%}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+        input[type="text"], input[type="password"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: rgb(14, 10, 10);
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+       
+    </style> 
+{% endblock %}
+{% block body %}
+    <h2 style="text-align:center;">User Sign Up</h2>
+    <form action="/signup" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        
+        <label for="userType">User Type:</label>
+        <select id="userType" name="userType" required>
+            <option value="">Select User Type</option>
+            <option value="Normal">Normal</option>
+            <option value="Admin">Admin</option>
+        </select><br>
+        
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+        
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required><br>
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br>
+        
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+        
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br>
+        
+        <label for="zipCode">Zip Code:</label>
+        <input type="text" id="zipCode" name="zipCode" required><br>
+        
+        <input type="submit" value="Sign Up">
+
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+<!-- 
+<form action="/signup" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+    
+    <label for="userType">User Type:</label>
+    <select id="userType" name="userType" required>
+        <option value="">Select User Type</option>
+        <option value="Normal">Normal</option>
+        <option value="Admin">Admin</option>
+    </select><br>
+    
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required><br>
+    
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required><br>
+    
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" required><br>
+    
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required><br>
+    
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required><br>
+    
+    <label for="state">State:</label>
+    <input type="text" id="state" name="state" required><br>
+    
+    <label for="zipCode">Zip Code:</label>
+    <input type="text" id="zipCode" name="zipCode" required><br>
+    
+    <input type="submit" value="Sign Up">
+</form> -->

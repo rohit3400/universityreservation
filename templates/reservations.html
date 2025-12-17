@@ -1,0 +1,101 @@
+{%extends 'base.html'%}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0f0202;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+        .confirm-button, .cancel-button, .completed-button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .confirm-button {
+            background-color: green;
+            color: white;
+        }
+        .cancel-button {
+            background-color: red;
+            color: white;
+        }
+        .completed-button {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <h1>Reservations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>Customer Note</th>
+                <th>Status</th>
+                <th>CheckIn Time</th>
+                <th>CheckOut Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation[0] }}</td>
+                <td><a href="/about/{{ reservation[1] }}">{{ reservation[1] }}</a></td>
+                <td>{{ reservation[2] }}</td>
+                <td>{{ reservation[3] }}</td>
+                <td>{{ reservation[4] }}</td>
+                <td>{{ reservation[6] }}</td>
+                <td>{{ reservation[5] }}</td>
+                <td>{{ reservation[7] }}</td>
+                <td>{{ reservation[8] }}</td>
+                <td class="button-container">
+                    {% if  not (reservation[5]=='Confirmed' or reservation[5]=='Completed' or reservation[5]=='Checked-In') %}
+                    <form action="/reservations" method="post">
+                        <input type="hidden" name="reservation_id" value="{{ reservation[0] }}">
+                        <input type="hidden" name="status" value="Confirmed">
+                        
+                        <button type="submit" class="confirm-button">Confirm</button>
+                        
+                    </form>
+                    {% endif %}
+                    {% if  not reservation[5]=='Completed' %}
+                    <form action="/reservations" method="post">
+                        <input type="hidden" name="reservation_id" value="{{ reservation[0] }}">
+                        <input type="hidden" name="status" value="Cancelled">
+                        <button type="submit" class="cancel-button">Cancel</button>
+                    </form>
+                    {% else %}
+                        <button type="submit" class="completed-button" disabled>Completed</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+                    
+                

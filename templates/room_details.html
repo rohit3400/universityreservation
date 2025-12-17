@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+
+{% block head %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Room Details</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Room Details</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Room ID</th>
+            <th>Room Name</th>
+            <th>Capacity</th>
+            <th>Building</th>
+            <th>Floor</th>
+            <th>Room Type</th>
+            <th>Facilities</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Image URL</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room[0] }}</td>
+            <td>{{ room[1] }}</td>
+            <td>{{ room[2] }}</td>
+            <td>{{ room[3] }}</td>
+            <td>{{ room[4] }}</td>
+            <td>{{ room[5] }}</td>
+            <td>{{ room[6] }}</td>
+            <td>{{ room[7] }}</td>
+            <td>{{ room[8] }}</td>
+            <td>{{ room[9] }}</td>
+            <td>
+                {% if room[8] == 'Available' %}
+                <form action="/book_room" method="post">
+                    <input type="hidden" name="room_id" value="{{ room[0] }}">
+                    <button type="submit" style="background-color:green;">Book Room</button>
+                </form>
+                {% else %}
+                <button style="background-color:gray;" disabled>Unavailable</button>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
